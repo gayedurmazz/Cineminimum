@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!--mysql:mysql-connector-mxj:5.0.12-->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- For performance reasons changed to MyISAM from org.hibernate.dialect.MySQLInnoDBDialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL55Dialect</property>
+
+        <!-- Database Settings -->
+        <property name="connection.url">jdbc:mysql://localhost:3306/cinema</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <!-- Properties -->
+
+        <property name="connection.autocommit">true</property>
+
+        <property name="hbm2ddl.auto">create</property>
+
+        <property name="showsql">true</property>
+        <mapping class="com.uniyaz.cinema.domain.CinemaCenter" ></mapping>
+        <mapping class="com.uniyaz.cinema.domain.CinemaSaloon" ></mapping>
+        <mapping class="com.uniyaz.cinema.domain.Movie" ></mapping>
+        <mapping class="com.uniyaz.cinema.domain.User" ></mapping>
+        <mapping class="com.uniyaz.cinema.domain.MovieSaloon" ></mapping>
+    </session-factory>
+
+</hibernate-configuration>
