@@ -14,4 +14,8 @@ public class BaseDomain implements Serializable {
         return super.hashCode();
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

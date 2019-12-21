@@ -25,5 +25,35 @@ public class CinemaSaloon extends BaseDomain {
     private CinemaCenter cinema;
 
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSaloonName() {
+        return saloonName;
+    }
+
+    public void setSaloonName(String saloonName) {
+        this.saloonName = saloonName;
+    }
+
+    public Date getSeans() {
+        return seans;
+    }
+
+    public void setSeans(Date seans) {
+        this.seans = seans;
+    }
+
+    public CinemaCenter getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(CinemaCenter cinema) {
+        this.cinema = cinema;
+    }
 }

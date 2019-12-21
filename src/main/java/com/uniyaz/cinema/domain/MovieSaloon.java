@@ -20,5 +20,27 @@ public class MovieSaloon {
     @JoinColumn(name = "MOVIE_ID", referencedColumnName = "ID", foreignKey = @ForeignKey(name = "FK_SALOON_MOVIE"))
     private Movie movie;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public CinemaSaloon getSaloon() {
+        return saloon;
+    }
+
+    public void setSaloon(CinemaSaloon saloon) {
+        this.saloon = saloon;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
 }

@@ -1,19 +1,17 @@
 package com.uniyaz;
 
-import javax.servlet.annotation.WebServlet;
-
+import com.uniyaz.cinema.ui.components.General;
 import com.uniyaz.cinema.utils.HibernateUtil;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.PopupView;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 import org.hibernate.SessionFactory;
+
+import javax.servlet.annotation.WebServlet;
 
 /**
  *
@@ -22,32 +20,25 @@ import org.hibernate.SessionFactory;
 @Widgetset("com.uniyaz.MyAppWidgetset")
 public class MyUI extends UI {
 
+    private PopupView popupView;
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-
-
-        final VerticalLayout layout = new VerticalLayout();
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
-
-        Button button = new Button("Click Me");
-        button.addClickListener( e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
-        });
-        
-        layout.addComponents(name, button);
-        layout.setMargin(true);
-        layout.setSpacing(true);
-        
-        setContent(layout);
+        sessionFactory.openSession();
+        General general = new General();
+        setContent(general);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
+    }
+
+    public PopupView getPopupView() {
+        return popupView;
+    }
+
+    public void setPopupView(PopupView popupView) {
+        this.popupView = popupView;
     }
 }
