@@ -1,8 +1,5 @@
 package com.uniyaz.cinema.ui.components;
 
-import com.uniyaz.MyUI;
-import com.uniyaz.cinema.ui.views.PopUpView;
-import com.vaadin.ui.PopupView;
 import com.vaadin.ui.VerticalLayout;
 
 public class General extends VerticalLayout {

@@ -10,6 +10,9 @@ import java.util.List;
 
 public class UserDao {
 
+    private String userName;
+    private String password;
+
     public User saveUser(User user) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession();) {
@@ -33,5 +36,22 @@ public class UserDao {
             System.out.println(ex.getMessage());
         }
         return userList;
+    }
+
+    public boolean isLoginAllowed(String userName,String password){
+        this.userName = userName;
+        this.password = password;
+
+        boolean isAllowed = false;
+
+        List<User> userList = findAllUsers();
+
+        for (User user : userList) {
+            if(userName.equals( user.getUserName()) && password.equals(user.getPassword())){
+                isAllowed = true;
+                break;
+            }
+        }
+        return isAllowed;
     }
 }

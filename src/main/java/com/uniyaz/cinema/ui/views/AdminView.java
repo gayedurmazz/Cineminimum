@@ -45,15 +45,24 @@ public class AdminView extends VerticalLayout {
 
             }
         });
+
         optionsLayout.addComponent(searchBtn);
 
         Button exitBtn = new Button();
         exitBtn.setIcon(FontAwesome.SIGN_OUT);
         exitBtn.setDescription("ÇIKIŞ YAP");
+        exitBtn.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent clickEvent) {
+                removeAllComponents();
+                Notification.show("ÇIKIŞ YAPILDI!");
+            }
+        });
         optionsLayout.addComponent(exitBtn);
 
-        setMargin(true);
-        setSpacing(true);
+        optionsLayout.setMargin(true);
+        optionsLayout.setSpacing(true);
+        optionsLayout.setWidth(100,Unit.PERCENTAGE);
         addComponent(optionsLayout);
     }
 

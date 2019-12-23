@@ -10,9 +10,6 @@ public class SideBar extends VerticalLayout {
     private Content content;
     public SideBar(Content content) {
         this.content = content;
-        MyLabel label = new MyLabel("Sidebar Label");
-        label.setStyleName(ValoTheme.TEXTAREA_ALIGN_CENTER);
-        addComponent(label);
 
         PopupView popUpView = new PopupView(new PopUpView(content));
         addComponent(popUpView);
@@ -23,8 +20,6 @@ public class SideBar extends VerticalLayout {
 
         setSpacing(true);
         setMargin(true);
-
-
 
     }
 }

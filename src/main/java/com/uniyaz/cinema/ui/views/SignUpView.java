@@ -38,13 +38,15 @@ public class SignUpView extends VerticalLayout {
 
         userRoleField = new MyComboBox();
         userRoleField.setCaption("Kullanıcı Yetkiniz");
+        userRoleField.addItem(EnumUserRole.ADMIN);
+        userRoleField.addItem(EnumUserRole.USER);
         mainLayout.addComponent(userRoleField);
 
         passwordField = new PasswordField();
         passwordField.setCaption("Şifre");
         mainLayout.addComponent(passwordField);
 
-        SignButton signUpButton = new SignButton("Sign In");
+        SignButton signUpButton = new SignButton("Sign Up");
         mainLayout.addComponent(signUpButton);
         signUpButton.addClickListener(new Button.ClickListener() {
             @Override
@@ -61,6 +63,9 @@ public class SignUpView extends VerticalLayout {
                 userDao.saveUser(user);
 
                 Notification.show("ÜYELİK TAMAMLANDI");
+
+                PopupView popupView = new PopupView();
+                mainLayout.addComponent(popupView);
             }
         });
 
