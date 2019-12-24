@@ -39,6 +39,7 @@ public class SignInView extends VerticalLayout {
 
         passwordField = new PasswordField();
         passwordField.setCaption("Şifre");
+        passwordField.setNullRepresentation("");
         mainLayout.addComponent(passwordField);
 
         SignButton signInButton = new SignButton("Sign In");

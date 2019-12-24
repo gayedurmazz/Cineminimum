@@ -63,6 +63,7 @@ public class SignUpView extends VerticalLayout {
 
         passwordField = new PasswordField();
         passwordField.setCaption("Şifre");
+        passwordField.setNullRepresentation("");
         mainLayout.addComponent(passwordField);
 
         item = new BeanItem<User>(user);
