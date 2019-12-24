@@ -80,6 +80,13 @@
 			<scope>provided</scope>
 		</dependency>
 		-->
+		<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-envers -->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate.orm</groupId>-->
+<!--			<artifactId>hibernate-envers</artifactId>-->
+<!--			<version>6.0.0.Alpha4</version>-->
+<!--		</dependency>-->
+
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>

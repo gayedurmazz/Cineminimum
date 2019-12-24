@@ -4,7 +4,6 @@ import com.uniyaz.MyUI;
 import com.uniyaz.cinema.ui.views.PopUpView;
 import com.vaadin.ui.PopupView;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.ValoTheme;
 
 public class SideBar extends VerticalLayout {
     private Content content;

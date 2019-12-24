@@ -20,6 +20,8 @@ import javax.servlet.annotation.WebServlet;
 @Widgetset("com.uniyaz.MyAppWidgetset")
 public class MyUI extends UI {
 
+    //// OnError Eklenebilir.
+
     private PopupView popupView;
     @Override
     protected void init(VaadinRequest vaadinRequest) {

@@ -2,7 +2,6 @@ package com.uniyaz.cinema.ui.views;
 
 import com.uniyaz.cinema.dao.AdminDao;
 import com.uniyaz.cinema.domain.Movie;
-import com.uniyaz.cinema.domain.MovieSaloon;
 import com.uniyaz.cinema.ui.components.MyLabel;
 import com.uniyaz.cinema.ui.components.MyMenuBar;
 import com.vaadin.data.Item;
@@ -39,7 +38,6 @@ public class UserView extends VerticalLayout {
         buildTableContainer();
 
         buildTable();
-
 
         fillTable();
 

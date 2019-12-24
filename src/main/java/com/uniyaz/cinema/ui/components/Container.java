@@ -1,6 +1,5 @@
 package com.uniyaz.cinema.ui.components;
 
-import com.uniyaz.cinema.ui.views.PopUpView;
 import com.vaadin.ui.HorizontalLayout;
 
 public class Container extends HorizontalLayout {

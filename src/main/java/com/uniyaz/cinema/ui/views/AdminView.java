@@ -4,6 +4,9 @@ import com.uniyaz.cinema.dao.AdminDao;
 import com.uniyaz.cinema.domain.Movie;
 import com.uniyaz.cinema.ui.components.MyLabel;
 import com.uniyaz.cinema.ui.components.MyTextField;
+import com.vaadin.data.fieldgroup.FieldGroup;
+import com.vaadin.data.fieldgroup.PropertyId;
+import com.vaadin.data.util.BeanItem;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
@@ -15,6 +18,19 @@ public class AdminView extends VerticalLayout {
     private HorizontalLayout optionsLayout;
     private FormLayout formLayout;
     private String userName;
+    private BeanItem<Movie> item;
+    private FieldGroup binder;
+
+
+    @PropertyId("id")
+    private MyTextField idField;
+
+    @PropertyId("movieName")
+    private MyTextField movieNameField;
+
+    @PropertyId("visionDate")
+    private DateField visionDateField;
+
     public AdminView(String userName) {
 
         this.userName = userName;
@@ -31,7 +47,8 @@ public class AdminView extends VerticalLayout {
         addMovieBtn.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent clickEvent) {
-                buildAddFormLayout();
+                Movie movie = new Movie();
+                buildAddFormLayout(movie);
             }
         });
         optionsLayout.addComponent(addMovieBtn);
@@ -66,18 +83,22 @@ public class AdminView extends VerticalLayout {
         addComponent(optionsLayout);
     }
 
-    private void buildAddFormLayout() {
+    private void buildAddFormLayout(Movie movie) {
         formLayout = new FormLayout();
 
-        MyTextField idField = new MyTextField();
+        item = new BeanItem<Movie>(movie);
+        binder = new FieldGroup(item);
+        binder.bindMemberFields(this);
+
+        idField = new MyTextField();
         idField.setCaption("Film ID'si");
         formLayout.addComponent(idField);
 
-        MyTextField movieNameField = new MyTextField();
+        movieNameField = new MyTextField();
         movieNameField.setCaption("Filmin Adı");
         formLayout.addComponent(movieNameField);
 
-        DateField visionDateField = new DateField();
+        visionDateField = new DateField();
         visionDateField.setCaption("Vizyon Tarihi");
         formLayout.addComponent(visionDateField);
 
@@ -88,17 +109,20 @@ public class AdminView extends VerticalLayout {
         saveButton.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent clickEvent) {
-                String movieNameFieldValue = movieNameField.getValue();
-                Date visionDateFieldValue = visionDateField.getValue();
+                try {
+                    binder.commit();
+                    Movie movie = item.getBean();
 
-                Movie movie = new Movie();
-                movie.setMovieName(movieNameFieldValue);
-                movie.setVisionDate(visionDateFieldValue);
+                    AdminDao adminDao = new AdminDao();
+                    adminDao.saveMovie(movie);
 
-                AdminDao adminDao = new AdminDao();
-                adminDao.saveMovie(movie);
-//                idField.setValue(movie.getId().);
-                Notification.show("Film Başarıyla Kaydedildi.");
+                    Notification.show("Film Başarıyla Kaydedildi.");
+
+                } catch (FieldGroup.CommitException e) {
+                    e.printStackTrace();
+                }
+
+
             }
         });
 

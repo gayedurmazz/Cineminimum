@@ -13,5 +13,4 @@ public class MyLabel extends Label {
         setStyleName(ValoTheme.LABEL_H1);
 
     }
-
 }

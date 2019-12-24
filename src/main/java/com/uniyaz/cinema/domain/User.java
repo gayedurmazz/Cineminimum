@@ -4,6 +4,8 @@ import com.uniyaz.cinema.common.BaseDomain;
 
 import javax.persistence.*;
 
+/////////
+
 @Entity
 @Table(name = "USER")
 public class User extends BaseDomain {
